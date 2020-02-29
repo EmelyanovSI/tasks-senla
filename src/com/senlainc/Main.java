@@ -1,5 +1,7 @@
 package com.senlainc;
 
+import com.senlainc.task1.Task1;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -14,7 +16,7 @@ public class Main {
             "6. task6\n" +
             "0. exit\n";
     private static final String toEXIT = "0 to exit";
-    private static final String TASK1 = "";
+    private static final String TASK1 = "task1 - even or odd, prime or composite number";
     private static final String TASK2 = "";
     private static final String TASK3 = "";
     private static final String TASK4 = "";
@@ -45,6 +47,25 @@ public class Main {
                     clear();
                     return;
                 case 1:
+                    System.out.println(toEXIT);
+                    System.out.println(TASK1);
+                    do {
+                        System.out.println();
+                        System.out.println("enter an integer");
+                        System.out.println();
+                        input();
+                        int number;
+                        try {
+                            number = Integer.parseInt(new Scanner(System.in).next());
+                        } catch (NumberFormatException e) {
+                            retry();
+                            continue;
+                        }
+                        if (number == 0) {
+                            break;
+                        }
+                        Task1.print(number);
+                    } while (true);
                     break;
                 case 2:
                     break;
