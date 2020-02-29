@@ -1,6 +1,7 @@
 package com.senlainc;
 
 import com.senlainc.task1.Task1;
+import com.senlainc.task2.Task2;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -17,7 +18,7 @@ public class Main {
             "0. exit\n";
     private static final String toEXIT = "0 to exit";
     private static final String TASK1 = "task1 - even or odd, prime or composite number";
-    private static final String TASK2 = "";
+    private static final String TASK2 = "task2 - lcm and gcd numbers";
     private static final String TASK3 = "";
     private static final String TASK4 = "";
     private static final String TASK5 = "";
@@ -68,6 +69,37 @@ public class Main {
                     } while (true);
                     break;
                 case 2:
+                    System.out.println(toEXIT);
+                    System.out.println(TASK2);
+                    do {
+                        System.out.println();
+                        System.out.println("enter integers (a, b)");
+                        System.out.println();
+                        input();
+                        System.out.print("a = ");
+                        int a, b;
+                        try {
+                            a = Integer.parseInt(new Scanner(System.in).next());
+                        } catch (NumberFormatException e) {
+                            retry();
+                            continue;
+                        }
+                        if (a == 0) {
+                            break;
+                        }
+                        input();
+                        System.out.print("b = ");
+                        try {
+                            b = Integer.parseInt(new Scanner(System.in).next());
+                        } catch (NumberFormatException e) {
+                            retry();
+                            continue;
+                        }
+                        if (b == 0) {
+                            break;
+                        }
+                        Task2.print(a, b);
+                    } while (true);
                     break;
                 case 3:
                     break;
