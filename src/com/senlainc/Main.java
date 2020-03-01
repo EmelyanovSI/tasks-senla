@@ -2,6 +2,7 @@ package com.senlainc;
 
 import com.senlainc.task1.Task1;
 import com.senlainc.task2.Task2;
+import com.senlainc.task3.Task3;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -19,7 +20,10 @@ public class Main {
     private static final String toEXIT = "0 to exit";
     private static final String TASK1 = "task1 - even or odd, prime or composite number";
     private static final String TASK2 = "task2 - lcm and gcd numbers";
-    private static final String TASK3 = "";
+    private static final String TASK3 = "task3\n" +
+            "count number of words in a sentence\n" +
+            "display words in sorted form\n" +
+            "uppercase first letter of each word";
     private static final String TASK4 = "";
     private static final String TASK5 = "";
     private static final String TASK6 = "";
@@ -102,6 +106,25 @@ public class Main {
                     } while (true);
                     break;
                 case 3:
+                    System.out.println(toEXIT);
+                    System.out.println(TASK3);
+                    do {
+                        System.out.println();
+                        System.out.println("enter a sentence");
+                        System.out.println();
+                        input();
+                        String string;
+                        try {
+                            string = new Scanner(System.in).nextLine();
+                        } catch (NumberFormatException e) {
+                            retry();
+                            continue;
+                        }
+                        if (string.equals("0")) {
+                            break;
+                        }
+                        Task3.print(string);
+                    } while (true);
                     break;
                 case 4:
                     break;
