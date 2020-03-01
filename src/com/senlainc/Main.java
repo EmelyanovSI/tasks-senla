@@ -4,6 +4,7 @@ import com.senlainc.task1.Task1;
 import com.senlainc.task2.Task2;
 import com.senlainc.task3.Task3;
 import com.senlainc.task4.Task4;
+import com.senlainc.task5.Task5;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -26,7 +27,7 @@ public class Main {
             "display words in sorted form\n" +
             "uppercase first letter of each word";
     private static final String TASK4 = "number of matches in the text";
-    private static final String TASK5 = "";
+    private static final String TASK5 = "find palindromes";
     private static final String TASK6 = "";
 
     private Main() {
@@ -159,6 +160,28 @@ public class Main {
                     } while (true);
                     break;
                 case 5:
+                    System.out.println(toEXIT);
+                    System.out.println(TASK5);
+                    do {
+                        System.out.println();
+                        System.out.println("enter an integer");
+                        System.out.println();
+                        input();
+                        int number;
+                        try {
+                            number = Integer.parseInt(new Scanner(System.in).next());
+                            if (!(0 <= number && number <= 100)) {
+                                throw new NumberFormatException();
+                            }
+                        } catch (NumberFormatException e) {
+                            retry();
+                            continue;
+                        }
+                        if (number == 0) {
+                            break;
+                        }
+                        Task5.print(number);
+                    } while (true);
                     break;
                 case 6:
                     break;
