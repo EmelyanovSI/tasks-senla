@@ -5,6 +5,7 @@ import com.senlainc.task2.Task2;
 import com.senlainc.task3.Task3;
 import com.senlainc.task4.Task4;
 import com.senlainc.task5.Task5;
+import com.senlainc.task6.Task6;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -26,9 +27,9 @@ public class Main {
             "count number of words in a sentence\n" +
             "display words in sorted form\n" +
             "uppercase first letter of each word";
-    private static final String TASK4 = "number of matches in the text";
-    private static final String TASK5 = "find palindromes";
-    private static final String TASK6 = "";
+    private static final String TASK4 = "task4 - number of matches in the text";
+    private static final String TASK5 = "task5 - find palindromes";
+    private static final String TASK6 = "task6 - knapsack task";
 
     private Main() {
         super();
@@ -164,7 +165,7 @@ public class Main {
                     System.out.println(TASK5);
                     do {
                         System.out.println();
-                        System.out.println("enter an integer");
+                        System.out.println("enter an integer (0 - 100)");
                         System.out.println();
                         input();
                         int number;
@@ -184,6 +185,25 @@ public class Main {
                     } while (true);
                     break;
                 case 6:
+                    do {
+                        clear();
+                        System.out.println(toEXIT);
+                        System.out.println(TASK6);
+                        System.out.println();
+                        (new Task6()).print();
+                        System.out.println();
+                        input();
+                        int number;
+                        try {
+                            number = Integer.parseInt(new Scanner(System.in).next());
+                        } catch (NumberFormatException e) {
+                            retry();
+                            continue;
+                        }
+                        if (number == 0) {
+                            break;
+                        }
+                    } while (true);
                     break;
             }
         } while (true);
