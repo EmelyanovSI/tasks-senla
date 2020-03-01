@@ -3,6 +3,7 @@ package com.senlainc;
 import com.senlainc.task1.Task1;
 import com.senlainc.task2.Task2;
 import com.senlainc.task3.Task3;
+import com.senlainc.task4.Task4;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -24,7 +25,7 @@ public class Main {
             "count number of words in a sentence\n" +
             "display words in sorted form\n" +
             "uppercase first letter of each word";
-    private static final String TASK4 = "";
+    private static final String TASK4 = "number of matches in the text";
     private static final String TASK5 = "";
     private static final String TASK6 = "";
 
@@ -127,6 +128,35 @@ public class Main {
                     } while (true);
                     break;
                 case 4:
+                    System.out.println(toEXIT);
+                    System.out.println(TASK4);
+                    do {
+                        System.out.println();
+                        System.out.println("enter text and word");
+                        System.out.println();
+                        input();
+                        String string, word;
+                        try {
+                            string = new Scanner(System.in).nextLine();
+                        } catch (NumberFormatException e) {
+                            retry();
+                            continue;
+                        }
+                        if (string.equals("0")) {
+                            break;
+                        }
+                        input();
+                        try {
+                            word = new Scanner(System.in).nextLine();
+                        } catch (NumberFormatException e) {
+                            retry();
+                            continue;
+                        }
+                        if (word.equals("0")) {
+                            break;
+                        }
+                        Task4.print(string, word);
+                    } while (true);
                     break;
                 case 5:
                     break;
