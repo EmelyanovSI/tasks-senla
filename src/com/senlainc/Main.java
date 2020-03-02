@@ -19,8 +19,8 @@ public class Main {
             "4. task4\n" +
             "5. task5\n" +
             "6. task6\n" +
-            "0. exit\n";
-    private static final String toEXIT = "0 to exit";
+            "e. exit\n\n";
+    private static final String toEXIT = "e to exit, q to quit";
     private static final String TASK1 = "task1 - even or odd, prime or composite number";
     private static final String TASK2 = "task2 - lcm and gcd numbers";
     private static final String TASK3 = "task3\n" +
@@ -31,193 +31,150 @@ public class Main {
     private static final String TASK5 = "task5 - find palindromes";
     private static final String TASK6 = "task6 - knapsack task";
 
+    private static String[] input;
+
     private Main() {
         super();
     }
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) {
+        clear();
         do {
-            clear();
-            System.out.println(MENU);
-            input();
-            int menu;
-            try {
-                menu = Integer.parseInt(new Scanner(System.in).next());
-            } catch (NumberFormatException e) {
-                continue;
-            }
-            if (0 > menu || menu > 6) {
-                continue;
-            }
-            clear();
-            switch (menu) {
-                case 0:
-                    clear();
-                    return;
+            switch (menu()) {
                 case 1:
-                    System.out.println(toEXIT);
-                    System.out.println(TASK1);
-                    do {
-                        System.out.println();
-                        System.out.println("enter an integer");
-                        System.out.println();
-                        input();
-                        int number;
-                        try {
-                            number = Integer.parseInt(new Scanner(System.in).next());
-                        } catch (NumberFormatException e) {
-                            retry();
-                            continue;
-                        }
-                        if (number == 0) {
-                            break;
-                        }
-                        Task1.print(number);
-                    } while (true);
+                    System.out.print(toEXIT + "\n" + TASK1);
+                    while (input("enter an integer")) {
+                        Task1.print(Integer.parseInt(input[0]));
+                    }
                     break;
                 case 2:
-                    System.out.println(toEXIT);
-                    System.out.println(TASK2);
-                    do {
-                        System.out.println();
-                        System.out.println("enter integers (a, b)");
-                        System.out.println();
-                        input();
-                        System.out.print("a = ");
-                        int a, b;
-                        try {
-                            a = Integer.parseInt(new Scanner(System.in).next());
-                        } catch (NumberFormatException e) {
-                            retry();
-                            continue;
-                        }
-                        if (a == 0) {
-                            break;
-                        }
-                        input();
-                        System.out.print("b = ");
-                        try {
-                            b = Integer.parseInt(new Scanner(System.in).next());
-                        } catch (NumberFormatException e) {
-                            retry();
-                            continue;
-                        }
-                        if (b == 0) {
-                            break;
-                        }
-                        Task2.print(a, b);
-                    } while (true);
+                    System.out.print(toEXIT + "\n" + TASK2);
+                    while (input(new String[]{"a = ", "b = "})) {
+                        Task2.print(Integer.parseInt(input[0]), Integer.parseInt(input[1]));
+                    }
                     break;
                 case 3:
-                    System.out.println(toEXIT);
-                    System.out.println(TASK3);
-                    do {
-                        System.out.println();
-                        System.out.println("enter a sentence");
-                        System.out.println();
-                        input();
-                        String string;
-                        try {
-                            string = new Scanner(System.in).nextLine();
-                        } catch (NumberFormatException e) {
-                            retry();
-                            continue;
-                        }
-                        if (string.equals("0")) {
-                            break;
-                        }
-                        Task3.print(string);
-                    } while (true);
+                    System.out.print(toEXIT + "\n" + TASK3);
+                    while (input(1, "enter a sentence")) {
+                        Task3.print(input[0]);
+                    }
                     break;
                 case 4:
-                    System.out.println(toEXIT);
-                    System.out.println(TASK4);
-                    do {
-                        System.out.println();
-                        System.out.println("enter text and word");
-                        System.out.println();
-                        input();
-                        String string, word;
-                        try {
-                            string = new Scanner(System.in).nextLine();
-                        } catch (NumberFormatException e) {
-                            retry();
-                            continue;
-                        }
-                        if (string.equals("0")) {
-                            break;
-                        }
-                        input();
-                        try {
-                            word = new Scanner(System.in).nextLine();
-                        } catch (NumberFormatException e) {
-                            retry();
-                            continue;
-                        }
-                        if (word.equals("0")) {
-                            break;
-                        }
-                        Task4.print(string, word);
-                    } while (true);
+                    System.out.print(toEXIT + "\n" + TASK4);
+                    while (input(2, "enter text and word")) {
+                        input[1] = input[1].split(Task3.regex)[0];
+                        Task4.print(input[0], input[1]);
+                    }
                     break;
                 case 5:
-                    System.out.println(toEXIT);
-                    System.out.println(TASK5);
-                    do {
-                        System.out.println();
-                        System.out.println("enter an integer (0 - 100)");
-                        System.out.println();
-                        input();
-                        int number;
-                        try {
-                            number = Integer.parseInt(new Scanner(System.in).next());
-                            if (!(0 <= number && number <= 100)) {
-                                throw new NumberFormatException();
-                            }
-                        } catch (NumberFormatException e) {
+                    System.out.print(toEXIT + "\n" + TASK5);
+                    while (input("enter an integer (0 - 100)")) {
+                        int number = Integer.parseInt(input[0]);
+                        if (0 > number || number > 100) {
                             retry();
                             continue;
-                        }
-                        if (number == 0) {
-                            break;
                         }
                         Task5.print(number);
-                    } while (true);
+                    }
                     break;
                 case 6:
-                    do {
+                    System.out.print(toEXIT + "\n" + TASK6);
+                    while (input()) {
                         clear();
-                        System.out.println(toEXIT);
-                        System.out.println(TASK6);
-                        System.out.println();
+                        System.out.print(toEXIT + "\n" + TASK6 + "\n\n");
                         (new Task6()).print();
-                        System.out.println();
-                        input();
-                        int number;
-                        try {
-                            number = Integer.parseInt(new Scanner(System.in).next());
-                        } catch (NumberFormatException e) {
-                            retry();
-                            continue;
-                        }
-                        if (number == 0) {
-                            break;
-                        }
-                    } while (true);
+                    }
                     break;
+                default:
+                    return;
             }
         } while (true);
     }
 
-    private static void clear() throws IOException, InterruptedException {
-        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+    private static int menu() {
+        do {
+            System.out.print(MENU);
+            System.out.print("> ");
+            String input;
+            input = new Scanner(System.in).nextLine();
+            if (input.equals("exit") || input.equals("e") ||
+                    input.equals("quit") || input.equals("q")) {
+                clear();
+                System.exit(0);
+            }
+            int menu;
+            try {
+                menu = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                clear();
+                continue;
+            }
+            if (1 > menu || menu > 6) {
+                clear();
+                continue;
+            }
+            clear();
+            return menu;
+        } while (true);
     }
 
-    private static void input() {
-        System.out.print("> ");
+    private static boolean input(int count, String text, String[] pattern, boolean integer) {
+        System.out.print("\n\n" + text + "\n\n");
+        input = new String[count];
+        int i = 0;
+        while (i < count) {
+            System.out.print("> " + pattern[i]);
+            input[i] = new Scanner(System.in).nextLine();
+            if (input[i].equals("exit") || input[i].equals("e")) {
+                clear();
+                System.exit(0);
+            }
+            if (input[i].equals("quit") || input[i].equals("q")) {
+                clear();
+                return false;
+            }
+            if (integer) {
+                try {
+                    Integer.parseInt(input[i]);
+                } catch (NumberFormatException e) {
+                    retry();
+                    continue;
+                }
+            }
+            ++i;
+        }
+        return true;
+    }
+
+    private static boolean input(int count, String text) {
+        String[] strings = new String[count];
+        for (int i = 0; i < count; ++i) {
+            strings[i] = "";
+        }
+        return input(count, text, strings, false);
+    }
+
+    private static boolean input(String[] strings) {
+        return input(2, "enter integers (a, b)", strings, true);
+    }
+
+    private static boolean input(String text) {
+        return input(1, text, new String[]{""}, true);
+    }
+
+    private static boolean input() {
+        return input(1, "press enter", new String[]{""}, false);
+    }
+
+    private static void clear() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (InterruptedException | IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void retry() {
-        System.out.println("error, try again! (0 to exit)");
+        System.out.print(String.format("error, try again! (%s)\n\n", toEXIT));
     }
 }
