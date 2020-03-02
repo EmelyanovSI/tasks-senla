@@ -4,21 +4,15 @@ import java.util.Arrays;
 
 public class Task3 {
 
+    public static String regex = "[ :;,.!?()\"']+";
+
     public static int count(String string) {
-        return string.split(" +").length;
+        return string.split(regex).length;
     }
 
     public static String[] sort(String string) {
-        String[] words = string.split("[ :;,.!?()\"']+");
-        for (int i = 0; i < words.length; ++i) {
-            for (int j = 0; j < words.length - 1 - i; ++j) {
-                if (words[j].length() > words[j + 1].length()) {
-                    String str = words[j];
-                    words[j] = words[j + 1];
-                    words[j + 1] = str;
-                }
-            }
-        }
+        String[] words = string.split(regex);
+        Arrays.sort(words);
         return words;
     }
 
