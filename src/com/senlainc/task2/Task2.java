@@ -7,7 +7,7 @@ public class Task2 {
     }
 
     public static int lcm(int a, int b) {
-        return (a * b) / gcd(a, b);
+        return gcd(a, b) == 0 ? 0 : (a * b) / gcd(a, b);
     }
 
     public static void print(int a, int b) {
