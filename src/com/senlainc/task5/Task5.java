@@ -9,7 +9,7 @@ public class Task5 {
     }
 
     public static ArrayList<Integer> findPalindromes(int number) {
-        ArrayList<Integer> array = new ArrayList<Integer>();
+        ArrayList<Integer> array = new ArrayList<>();
         for (int i = 0; i < number; ++i) {
             if (isPalindrome(String.valueOf(i))) {
                 array.add(i);
