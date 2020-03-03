@@ -96,9 +96,9 @@ public class Main {
             System.out.print(MENU);
             System.out.print("> ");
             String input;
-            input = new Scanner(System.in).nextLine();
-            if (input.equals("exit") || input.equals("e") ||
-                    input.equals("quit") || input.equals("q")) {
+            input = new Scanner(System.in).nextLine().trim();
+            if (input.toLowerCase().equals("exit") || input.toLowerCase().equals("e") ||
+                    input.toLowerCase().equals("quit") || input.toLowerCase().equals("q")) {
                 clear();
                 System.exit(0);
             }
@@ -124,12 +124,12 @@ public class Main {
         int i = 0;
         while (i < count) {
             System.out.print("> " + pattern[i]);
-            input[i] = new Scanner(System.in).nextLine();
-            if (input[i].equals("exit") || input[i].equals("e")) {
+            input[i] = new Scanner(System.in).nextLine().trim();
+            if (input[i].toLowerCase().equals("exit") || input[i].toLowerCase().equals("e")) {
                 clear();
                 System.exit(0);
             }
-            if (input[i].equals("quit") || input[i].equals("q")) {
+            if (input[i].toLowerCase().equals("quit") || input[i].toLowerCase().equals("q")) {
                 clear();
                 return false;
             }
