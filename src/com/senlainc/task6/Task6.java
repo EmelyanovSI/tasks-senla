@@ -51,12 +51,15 @@ public class Task6 {
     }
 
     public void print() {
-        System.out.println(this.toString() + "total cost of packed items is " + pack(things, ks));
+        System.out.println(this.toString() + "total cost of packed items: " + pack(things, ks));
     }
 
     @Override
     public String toString() {
-        return String.format("knapsack capacity: %d\nthings:\n %s\n", ks.capacity, Arrays.toString(things));
+        return String.format(
+                "things:\n %s\nnumber of things: %d\nknapsack capacity: %d\n",
+                Arrays.toString(things), things.length, ks.capacity
+        );
     }
 
 }
