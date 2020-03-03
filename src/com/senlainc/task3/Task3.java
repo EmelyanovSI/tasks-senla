@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Task3 {
 
-    public static String regex = "[ :;,.!?()\"']+";
+    public static String regex = "[ :;,.!?/\"'`(|)]+";
 
     public static int count(String string) {
         return string.split(regex).length;
